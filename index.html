@@ -143,7 +143,11 @@ Error message and password prompt
 
 <li>$:/.mr/kookma/stylesheet/tw-version</li>
 
+<li>$:/.tb/modules/startup/hide-sidebar.js</li>
+
 <li>$:/build</li>
+
+<li>$:/config/HideSidebarOnStartup</li>
 
 <li>$:/config/KookmaPluginLibrary</li>
 
@@ -299,6 +303,8 @@ Error message and password prompt
 
 <li>$:/tags/Stylesheet</li>
 
+<li>$:/tags/TextEditor/Snippet</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -423,6 +429,8 @@ Error message and password prompt
 
 <li>Experimentboy</li>
 
+<li>External_Link_Icon</li>
+
 <li>Fantastique</li>
 
 <li>FAQ</li>
@@ -501,6 +509,10 @@ Error message and password prompt
 
 <li>LTg#</li>
 
+<li>macro iframe-yt-list</li>
+
+<li>macro iframe-yt-list example</li>
+
 <li>Made In France ASMR</li>
 
 <li>Mathématiques</li>
@@ -561,6 +573,8 @@ Error message and password prompt
 
 <li>Sketch</li>
 
+<li>snippet iframe-yt-list</li>
+
 <li>sociamix</li>
 
 <li>Speed Detective (2014)</li>
@@ -570,6 +584,8 @@ Error message and password prompt
 <li>stats</li>
 
 <li>style</li>
+
+<li>Style CSS icon after target blank anchors</li>
 
 <li>Style Dark mode</li>
 
@@ -608,6 +624,8 @@ Error message and password prompt
 <li>TEDx</li>
 
 <li>Template chaîne</li>
+
+<li>Template channel</li>
 
 <li>Templates</li>
 
@@ -670,9 +688,45 @@ Error message and password prompt
 }
 &lt;/pre&gt;</pre>
 </div>
+<div bag="default" created="20151010151732122" creator="Tobias Beer" modified="20210303013913358" module-type="startup" revision="0" tags="TW5" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript">
+<pre>/*\
+title: $:/.tb/modules/startup/hide-sidebar.js
+type: application/javascript
+module-type: startup
+created: 20151010151732122
+creator: Tobias Beer
+modified: 20151010151750739
+
+Hides the sidebar on startup when the config tiddler [[$:/config/hide-sidebar-on-startup]] contains &quot;yes&quot;
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+// Export name and synchronous status
+exports.name = &quot;hide-sidebar-on-startup&quot;;
+exports.platforms = [&quot;browser&quot;];
+exports.after = [&quot;startup&quot;];
+exports.synchronous = true;
+
+exports.startup = function() {
+	var conf = $tw.wiki.getTiddler(&quot;$:/config/HideSidebarOnStartup&quot;),
+		value = (conf ? conf.getFieldString(&quot;text&quot;) : &quot;&quot;).toLowerCase(),
+		state = value == &quot;yes&quot; ? &quot;no&quot; : &quot;yes&quot;;
+	$tw.wiki.setText(&quot;$:/state/sidebar&quot;, &quot;text&quot;, undefined, state);
+};
+
+})();</pre>
+</div>
 <div commit="ce8c03250cc2307fa12a992176629140c8391ab7" title="$:/build">
 <pre>Built from branch 'tiddlywiki-com' at commit ce8c03250cc2307fa12a992176629140c8391ab7 of https://github.com/Jermolene/TiddlyWiki5 at 2021-01-15 16:54:09 UTC
 </pre>
+</div>
+<div bag="default" created="20151007165524815" creator="Tobias Beer" modified="20210303013924787" revision="0" tags="TW5" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki">
+<pre>yes</pre>
 </div>
 <div caption="Kookma Plugin Library" created="20200306121057751" modified="20200323203955814" revision="0" tags="$:/tags/PluginLibrary" title="$:/config/KookmaPluginLibrary" type="text/vnd.tiddlywiki" url="https://kookma.github.io/TW-PluginLibrary/library/index.html">
 <pre>Kookma plugin library is a set of plugins, themes, and scripts, to extend functionality and add new features to Tiddlywiki. For detail information visit the library at [[GitHub|https://github.com/kookma]]. It is recommended to backup your data before installing any plugin, theme, or script. 
@@ -10634,13 +10688,13 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div created="20201112221014456" modified="20210111182601868" title="$:/GitHub/Repo">
 <pre>perlesvideoludiques/perlesvideoludiques.github.io</pre>
 </div>
-<div created="20201112220827768" modified="20210227161555060" title="$:/GitHub/Username">
+<div created="20201112220827768" modified="20210303014000950" title="$:/GitHub/Username">
 <pre>perlesvideoludiques</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>Les tiddlers suivants ont été importés :
 
-# [[$:/config/KookmaPluginLibrary]]</pre>
+# [[$:/.tb/modules/startup/hide-sidebar.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -16228,10 +16282,10 @@ $text$
 <div created="20210210165613515" modified="20210210165613515" title="$:/state/folded/Style LatestChanges">
 <pre>hide</pre>
 </div>
-<div created="20210116022937093" modified="20210120001403031" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20210116022937093" modified="20210303012121215" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
-<div created="20210205170608441" modified="20210223224750061" title="$:/state/sidebar">
+<div created="20210205170608441" modified="20210303013949110" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20210116023123239" modified="20210223140057924" title="$:/state/tab--1498284803">
@@ -16258,7 +16312,7 @@ $text$
 <div created="20210115193103404" modified="20210211172340459" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20210115193011157" modified="20210223140355887" title="$:/state/tab/sidebar--595412856">
+<div created="20210115193011157" modified="20210303013927589" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20210115193658820" modified="20210115193703691" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -16274,6 +16328,9 @@ $text$
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
 <div created="20210211144042213" modified="20210211144048756" tags="TW5" title="$:/tags/Stylesheet">
+<pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
+</div>
+<div created="20210303010926688" modified="20210303010932332" tags="TW5" title="$:/tags/TextEditor/Snippet">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -16462,7 +16519,7 @@ Huis clos surréel où sept personnages vont se rencontrer sans raison apparente
 &lt;div class=&quot;container-iframe&quot;&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLGPWPtcc-r81ALQNTgIudLqcLGAH1oOKq&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
-<div created="20210212025423678" modified="20210212025610271" tags="Chaîne Documentaires Culture" title="ARTE">
+<div created="20210212025423678" modified="20210303011152541" tags="Chaîne Documentaires Culture" title="ARTE">
 <pre>''chaîne'' : https://www.youtube.com/c/LEspritSorcierOfficiel
 
 &lt;&lt;&lt;
@@ -16470,10 +16527,9 @@ Bienvenue sur ARTE, la chaîne culturelle européenne. Histoire, sciences, cultu
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUwI-JbGNsojunnHbFAc0M4Q&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUwI-JbGNsojunnHbFAc0M4Q&gt;&gt;</pre>
 </div>
-<div created="20210212030925438" modified="20210212031125475" tags="Chaîne Documentaires Découvertes" title="ARTE Découverte">
+<div created="20210212030925438" modified="20210303011234528" tags="Chaîne Documentaires Découvertes" title="ARTE Découverte">
 <pre>''chaîne'' : https://www.youtube.com/artefr
 
 &lt;&lt;&lt;
@@ -16481,9 +16537,7 @@ Bienvenue sur ARTE Découverte, la chaîne de la nature, du voyage et de l'évas
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUL_cZf5sHKQHMRIEax5o3sg&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUL_cZf5sHKQHMRIEax5o3sg&gt;&gt;</pre>
 </div>
 <div created="20210211013442967" modified="20210211013450042" tags="style" title="ASMR">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16508,7 +16562,7 @@ Authentik raconte avec humour les aventures de Ben, un jeune de banlieue, aussi 
 &lt;div class=&quot;container-iframe&quot;&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLvjWFqESqhsMtgh-Zot8rTk3-mmFkaoZ_&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210111201914762" modified="20210205181804299" tags="Chaîne Découvertes" title="Axolot">
+<div created="20210111201914762" modified="20210303011251920" tags="Chaîne Découvertes" title="Axolot">
 <pre>''chaîne'' : https://www.youtube.com/user/Axolotblog
 
 &lt;&lt;&lt;
@@ -16516,8 +16570,7 @@ Authentik raconte avec humour les aventures de Ben, un jeune de banlieue, aussi 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU2_OG1L8DLTzQ7UrZVOk7OA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UU2_OG1L8DLTzQ7UrZVOk7OA&gt;&gt;</pre>
 </div>
 <div created="20210222230827190" modified="20210222231048666" tags="TW5" title="badge">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16578,7 +16631,7 @@ La chaîne ~YouTube officielle des &quot;Chevaliers du Zodiaque, La Série Abré
 * Université Savoie Mont Blanc : https://www.youtube.com/c/Univ-smbFr
 * Université Lumière Lyon 2 : https://www.youtube.com/user/UnivLyon2</pre>
 </div>
-<div created="20210111202548996" modified="20210205181756841" tags="Chaîne Vulgarisation Statistiques" title="Chat Sceptique">
+<div created="20210111202548996" modified="20210303011308773" tags="Chaîne Vulgarisation Statistiques" title="Chat Sceptique">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCOuIgj0CYCXCvjWywjDbauw
 
 &lt;&lt;&lt;
@@ -16586,8 +16639,7 @@ Le félino-scepticisme, c'est avant tout une tentative de réunir les gens autou
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUOuIgj0CYCXCvjWywjDbauw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUOuIgj0CYCXCvjWywjDbauw&gt;&gt;</pre>
 </div>
 <div created="20210212020646197" modified="20210212020651714" tags="style" title="Chimie">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16609,7 +16661,7 @@ CHROMA est une CHROnique de cinéMA sur Dailymotion, dont la première saison se
 <div created="20210111192807879" modified="20210111193646219" tags="style" title="Cinéma">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111195425688" modified="20210205181751058" tags="Animation Humour Vlog Chaîne" title="COLAS BIM">
+<div created="20210111195425688" modified="20210303011329316" tags="Animation Humour Vlog Chaîne" title="COLAS BIM">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCBK2DclO34h6BDqqrh-drPw
 
 &lt;&lt;&lt;
@@ -16619,8 +16671,7 @@ CHROMA est une CHROnique de cinéMA sur Dailymotion, dont la première saison se
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUBK2DclO34h6BDqqrh-drPw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUBK2DclO34h6BDqqrh-drPw&gt;&gt;</pre>
 </div>
 <div created="20210111192814313" modified="20210111193643372" tags="style" title="Comédie">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16660,7 +16711,7 @@ CHROMA est une CHROnique de cinéMA sur Dailymotion, dont la première saison se
 <div created="20210111192422796" modified="20210111193601804" tags="style" title="Courts métrages">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210119215618027" modified="20210205182302341" tags="Parodie Websérie Chaîne Animation" title="CrazyBomb World">
+<div created="20210119215618027" modified="20210303011342995" tags="Parodie Websérie Chaîne Animation" title="CrazyBomb World">
 <pre>''chaîne'' : https://www.youtube.com/user/CrazybombWorld
 
 &lt;&lt;&lt;
@@ -16674,13 +16725,12 @@ Nous vous souhaitons une bonne visite ! ;D
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUt08KVHPt7rxSvbouUbz0sg&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUt08KVHPt7rxSvbouUbz0sg&gt;&gt;</pre>
 </div>
 <div created="20210111192828263" modified="20210111193651980" tags="style" title="Critique">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111203557790" modified="20210205181729077" tags="Chaîne Chronique Websérie Humour" title="CROSSED">
+<div created="20210111203557790" modified="20210303011406589" tags="Chaîne Chronique Websérie Humour todo" title="CROSSED">
 <pre>''chaîne'' : https://www.dailymotion.com/karimdebbache
 
 &lt;&lt;&lt;
@@ -16694,7 +16744,7 @@ Crossed est une émission culturelle et humoristique sur le cinéma et les jeux 
 <div created="20210111192103825" modified="20210111193516308" tags="style" title="Cuisine">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210211150004862" modified="20210211150928946" tags="Chaîne Philosophie Productivité [[Psychologie positive]]" title="Cyrus North">
+<div created="20210211150004862" modified="20210303011425635" tags="Chaîne Philosophie Productivité [[Psychologie positive]]" title="Cyrus North">
 <pre>''channel'' : https://www.youtube.com/c/CyrusNorth
 
 &lt;&lt;&lt;
@@ -16702,9 +16752,7 @@ Crossed est une émission culturelle et humoristique sur le cinéma et les jeux 
 &lt;&lt;&lt;
 
 ;Last videos uploaded :
-
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUah8C0gmLkdtvsy0b2jrjrw&amp;iv_load_policy=3&amp;modestbranding=1&amp;&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
+&lt;&lt;iframe-yt-list UUah8C0gmLkdtvsy0b2jrjrw&gt;&gt;</pre>
 </div>
 <div created="20210111192141804" modified="20210111193523501" tags="style" title="Débunk">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16712,7 +16760,7 @@ Crossed est une émission culturelle et humoristique sur le cinéma et les jeux 
 <div created="20210111192833945" modified="20210111193654667" tags="style" title="Découvertes">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111201336398" modified="20210205181656484" tags="Chaîne Debunk Vulgarisation" title="DEFAKATOR">
+<div created="20210111201336398" modified="20210303011440990" tags="Chaîne Debunk Vulgarisation" title="DEFAKATOR">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCU0FhLr6fr7U9GOn6OiQHpQ/videos
 
 &lt;&lt;&lt;
@@ -16729,13 +16777,12 @@ Crossed est une émission culturelle et humoristique sur le cinéma et les jeux 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUU0FhLr6fr7U9GOn6OiQHpQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUU0FhLr6fr7U9GOn6OiQHpQ&gt;&gt;</pre>
 </div>
 <div created="20210116023030579" modified="20210116023036552" tags="style" title="Dessin">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111194844741" modified="20210205181650263" tags="Websérie Politique Animation Chaîne" title="Diable Positif">
+<div created="20210111194844741" modified="20210303011519274" tags="Websérie Politique Animation Chaîne" title="Diable Positif">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCI_FnSJPNGd3Y3IL0PwD-NQ
 
 &lt;&lt;&lt;
@@ -16743,10 +16790,9 @@ Bienvenue dans les bureaux du Diable Positif, ici nous analysons l'actualité po
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLr1-IiHV8V1w-Tt1CscDHEzchFlpH621-&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list PLr1-IiHV8V1w-Tt1CscDHEzchFlpH621-&gt;&gt;</pre>
 </div>
-<div created="20210111200256096" modified="20210205181644940" tags="Chaîne Vulgarisation Biologie" title="DirtyBiology">
+<div created="20210111200256096" modified="20210303011533675" tags="Chaîne Vulgarisation Biologie" title="DirtyBiology">
 <pre>''chaîne'' : https://www.youtube.com/user/dirtybiology/videos
 
 &lt;&lt;&lt;
@@ -16754,8 +16800,7 @@ Bienvenue dans les bureaux du Diable Positif, ici nous analysons l'actualité po
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUtqICqGbPSbTN09K1_7VZ3Q&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUtqICqGbPSbTN09K1_7VZ3Q&gt;&gt;</pre>
 </div>
 <div created="20210111192149398" modified="20210111193526263" tags="style" title="Documentaires">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16772,7 +16817,7 @@ Bienvenue dans les bureaux du Diable Positif, ici nous analysons l'actualité po
 <div created="20210111192850011" modified="20210111193657604" tags="style" title="Drame">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210212020845544" modified="20210212021051600" tags="Chaîne Education Apprendre Physique Cours" title="E-Learning Physique">
+<div created="20210212020845544" modified="20210303011550337" tags="Chaîne Education Apprendre Physique Cours" title="E-Learning Physique">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCZ6WKCGAmX5IiQXf-XKlnjA
 
 &lt;&lt;&lt;
@@ -16781,8 +16826,7 @@ Cette chaîne est animée par Benoît Hébert, normalien, agrégé de physique d
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUZ6WKCGAmX5IiQXf-XKlnjA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUZ6WKCGAmX5IiQXf-XKlnjA&gt;&gt;</pre>
 </div>
 <div created="20210111192856355" modified="20210111193700895" tags="style" title="Ecologie">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16793,7 +16837,7 @@ Cette chaîne est animée par Benoît Hébert, normalien, agrégé de physique d
 <div created="20210111192358586" modified="20210111193552747" tags="style" title="Education sexuelle">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111224314748" modified="20210205181637470" tags="Histoire Chaîne Humour" title="Epic Teaching of the History">
+<div created="20210111224314748" modified="20210303011618913" tags="Histoire Chaîne Humour" title="Epic Teaching of the History">
 <pre>''chaîne'' : https://www.youtube.com/user/EpicTeachingHistory
 
 &lt;&lt;&lt;
@@ -16801,8 +16845,7 @@ Abonne toi 2 fois stp.
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUHwd4qMCzN4A2r6piZxTl4A&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUHwd4qMCzN4A2r6piZxTl4A&gt;&gt;</pre>
 </div>
 <div created="20210111192530633" modified="20210111193618128" tags="style" title="Essais vidéos">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16810,17 +16853,23 @@ Abonne toi 2 fois stp.
 <div created="20210212020330858" modified="20210212020336649" tags="style" title="Expériences">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210212020414907" modified="20210212020625795" tags="Chaîne Vulgarisation Découvertes Expériences Chimie Physique" title="Experimentboy">
+<div created="20210212020414907" modified="20210303011634235" tags="Chaîne Vulgarisation Découvertes Expériences Chimie Physique" title="Experimentboy">
 <pre>''chaîne'' : https://www.youtube.com/user/experimentboyTV
 
 &lt;&lt;&lt;
 De la Science et du Fun !
-ExperimentBoy, incarné par Baptiste Mortier-Dumont, saura vous faire aimer la science et les découvertes de manière spectaculaire !
+~ExperimentBoy, incarné par Baptiste Mortier-Dumont, saura vous faire aimer la science et les découvertes de manière spectaculaire !
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUvGag7MyHR8H9oRm9iL9Ifw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUvGag7MyHR8H9oRm9iL9Ifw&gt;&gt;</pre>
+</div>
+<div created="20210302174452210" modified="20210302220141514" tags="icon SVG" title="External_Link_Icon" type="image/svg+xml">
+<pre>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 20 17.142857&quot; height=&quot;10px&quot; fill=&quot;#b0b0db&quot; &gt;
+
+  &lt;path d=&quot;M15.714286 10.357143v3.571428q0 1.328125-.9375 2.265625-.948661.948661-2.276786.948661H3.214286q-1.328125 0-2.265625-.948661Q0 15.256696 0 13.928571V4.64286q0-1.32813.948661-2.27679.9375-.9375 2.265625-.9375h7.857143q.15625 0 .256696.10045.100446.10044.100446.25669V2.5q0 .15625-.100446.2567-.100446.10044-.256696.10044H3.214286q-.736607 0-1.261161.52456-.524554.52455-.524554 1.26116v9.285711q0 .736608.524554 1.261161.524554.524554 1.261161.524554H12.5q.736607 0 1.261161-.524554.524553-.524553.524553-1.261161v-3.571428q0-.15625.100447-.256697Q14.486607 10 14.642857 10h.714286q.15625 0 .256696.100446.100447.100447.100447.256697zM20 .71429v5.71428q0 .29018-.212054.50223-.212053.21206-.502232.21206-.290178 0-.502232-.21206l-1.964286-1.96428-7.276785 7.276784q-.111607.111607-.256697.111607-.145089 0-.256696-.111607l-1.272322-1.272322q-.111607-.111607-.111607-.256696 0-.14509.111607-.256697L15.033482 3.1808l-1.964286-1.96428q-.212053-.21206-.212053-.50223 0-.29018.212053-.50224Q13.28125 0 13.571429 0h5.714285q.290179 0 .502232.21205Q20 .42411 20 .71429z&quot;/&gt;
+&lt;/svg&gt;
+</pre>
 </div>
 <div created="20210111192909236" modified="20210111193704097" tags="style" title="Fantastique">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
@@ -16927,7 +16976,7 @@ Série qui mêle l'univers des super-héros avec la comédie. Hero Corp raconte 
 <div created="20210111192238765" modified="20210111193532756" tags="style" title="Histoire">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111221652352" modified="20210205181629325" tags="Politique Sociopsychologie Vulgarisation Chaîne Chronique" title="horizon-gull">
+<div created="20210111221652352" modified="20210303011648583" tags="Politique Sociopsychologie Vulgarisation Chaîne Chronique" title="horizon-gull">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCGeFgMJfWclTWuPw8Ok5FUQ
 
 &lt;&lt;&lt;
@@ -16935,14 +16984,12 @@ Série qui mêle l'univers des super-héros avec la comédie. Hero Corp raconte 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUGeFgMJfWclTWuPw8Ok5FUQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
-</pre>
+&lt;&lt;iframe-yt-list UUGeFgMJfWclTWuPw8Ok5FUQ&gt;&gt;</pre>
 </div>
 <div created="20210111192244029" modified="20210111193535488" tags="style" title="Horreur">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111195637755" modified="20210205181620606" tags="Websérie Histoire Animation Documentaires Chaîne" title="horror humanum est">
+<div created="20210111195637755" modified="20210303011704813" tags="Websérie Histoire Animation Documentaires Chaîne" title="horror humanum est">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCLbgxBMMEo6mAYe87esxGmg
 
 &lt;&lt;&lt;
@@ -16950,14 +16997,12 @@ Série qui mêle l'univers des super-héros avec la comédie. Hero Corp raconte 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UULbgxBMMEo6mAYe87esxGmg
-&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UULbgxBMMEo6mAYe87esxGmg&gt;&gt;</pre>
 </div>
 <div created="20210111192915605" modified="20210111193707448" tags="style" title="Humour">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111201518950" modified="20210205181612979" tags="Chaîne Zététique" title="Hygiène Mentale">
+<div created="20210111201518950" modified="20210303011721463" tags="Chaîne Zététique" title="Hygiène Mentale">
 <pre>''chaîne'' : 
 
 * youtube : https://www.youtube.com/user/fauxsceptique
@@ -16974,8 +17019,7 @@ Série qui mêle l'univers des super-héros avec la comédie. Hero Corp raconte 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUMFcMhePnH4onVHt2-ItPZw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUMFcMhePnH4onVHt2-ItPZw&gt;&gt;</pre>
 </div>
 <div created="20210111215619549" modified="20210205182459797" tags="Websérie Comédie" title="J'ai jamais su dire non">
 <pre>''Synopsys''
@@ -16991,7 +17035,7 @@ Suite : [[LA THÉORIE DES BALLS|LA THÉORIE DES BALLS]]</pre>
 <div created="20210111192928891" modified="20210111193710588" tags="style" title="Jeux vidéos">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111204347335" modified="20210205181606014" tags="Chronique Critique Humour Chaîne" title="Joueur Du Grenier">
+<div created="20210111204347335" modified="20210303011750927" tags="Chronique Critique Humour Chaîne" title="Joueur Du Grenier">
 <pre>''chaîne'' : https://www.youtube.com/user/joueurdugrenier
 
 &lt;&lt;&lt;
@@ -16999,8 +17043,7 @@ Joueur du Grenier (JDG), est une émission humoristique de tests de jeux vidéo 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU_yP2DpIgs5Y1uWC0T03Chw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UU_yP2DpIgs5Y1uWC0T03Chw&gt;&gt;</pre>
 </div>
 <div created="20210111212627171" modified="20210111213048273" tags="Série Humour Drama Fantastique Histoire" title="Kaamelott">
 <pre>''chaîne :'' https://www.youtube.com/channel/UCc587kWO4l93a9puOF3wHpg
@@ -17047,7 +17090,7 @@ Ve siècle après Jésus-Christ. L'Angleterre s'appelle encore la Bretagne. Le C
 &lt;/p&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210212021331163" modified="20210212021501703" tags="Chaîne Education Apprendre Cours" title="KhanAcademyFrancophone">
+<div created="20210212021331163" modified="20210303011808916" tags="Chaîne Education Apprendre Cours" title="KhanAcademyFrancophone">
 <pre>''chaîne'' : https://www.youtube.com/user/KhanAcademyFrancais
 
 &lt;&lt;&lt;
@@ -17055,8 +17098,7 @@ Apprenez gratuitement les Mathématiques, l'Art, la Programmation, l'Economie, l
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUxJOha9_0qZHuGf1d4imhyQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUxJOha9_0qZHuGf1d4imhyQ&gt;&gt;</pre>
 </div>
 <div created="20210111214659588" modified="20210111214907544" tags="Live" title="L'apéro du Captain">
 <pre>site : http://www.captainweb.net/category/lapero-du-captain/
@@ -17067,7 +17109,7 @@ Apprenez gratuitement les Mathématiques, l'Art, la Programmation, l'Economie, l
 
 http://www.captainweb.net/live/</pre>
 </div>
-<div created="20210212015701119" modified="20210212015906556" tags="Chaîne Vulgarisation Documentaires Education" title="L'Esprit Sorcier Officiel">
+<div created="20210212015701119" modified="20210303011823159" tags="Chaîne Vulgarisation Documentaires Education" title="L'Esprit Sorcier Officiel">
 <pre>''chaîne'' : https://www.youtube.com/c/LEspritSorcierOfficiel
 
 &lt;&lt;&lt;
@@ -17075,10 +17117,9 @@ Fondé par Frédéric Courant, Pascal Léonard et une partie de l'équipe de C'e
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUH6rAZUDfVIoVSJjm3vlcnw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUH6rAZUDfVIoVSJjm3vlcnw&gt;&gt;</pre>
 </div>
-<div created="20210111202136160" modified="20210205181600504" tags="Chaîne Vulgarisation Statistiques" title="La statistique expliquée à mon chat">
+<div created="20210111202136160" modified="20210303011839303" tags="Chaîne Vulgarisation Statistiques" title="La statistique expliquée à mon chat">
 <pre>^^Nouvelle chaîne : [[Chat Sceptique]]^^
 
 ''chaîne'' : https://www.youtube.com/channel/UCWty1tzwZW_ZNSp5GVGteaA
@@ -17088,8 +17129,7 @@ De la statistique, des mathématiques et de la démographie expliquées à mon c
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUWty1tzwZW_ZNSp5GVGteaA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUWty1tzwZW_ZNSp5GVGteaA&gt;&gt;</pre>
 </div>
 <div created="20210111220021799" modified="20210205182506708" tags="Websérie Comédie" title="LA THÉORIE DES BALLS">
 <pre>Série précédente : [[J'ai jamais su dire non]]
@@ -17152,7 +17192,7 @@ Raph est un jeune homme paisible et sans histoire, jusqu'à un jour de 2009 où,
 
 [[Making of|http://levisiteurdufutur.com/bonus-making-of.html]]</pre>
 </div>
-<div created="20210212021726203" modified="20210212021825489" tags="Chaîne Education Apprendre Cours" title="Les Bons Profs">
+<div created="20210212021726203" modified="20210303011855394" tags="Chaîne Education Apprendre Cours" title="Les Bons Profs">
 <pre>''chaîne'' : https://www.youtube.com/user/lesbonsprofs
 
 &lt;&lt;&lt;
@@ -17160,10 +17200,9 @@ Retrouvez des centaines de rappels de cours et de méthodes pour le collège et 
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUL7FXdd8TW0hxNHmzlPlAQQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUL7FXdd8TW0hxNHmzlPlAQQ&gt;&gt;</pre>
 </div>
-<div created="20210111204836038" modified="20210205181554741" tags="Chronique Vulgarisation Ecologie Chaîne" title="Les chroniques écologiques du Professeur Feuillage">
+<div created="20210111204836038" modified="20210303011910726" tags="Chronique Vulgarisation Ecologie Chaîne" title="Les chroniques écologiques du Professeur Feuillage">
 <pre>''chaîne'' : https://www.youtube.com/channel/UC0JUkXAVVA4qWH1BQRs5N3A
 
 &lt;&lt;&lt;
@@ -17174,8 +17213,7 @@ Le fond : Des infos fouillées résultant d’un véritable travail journalistiq
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLverOb56261sDNGS2gUPGhqPfQBiYCsUt&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list PLverOb56261sDNGS2gUPGhqPfQBiYCsUt&gt;&gt;</pre>
 </div>
 <div created="20210111214920313" modified="20210111215055590" tags="Talk-show" title="Les Nuits Originales">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCm7KqKpv85JrIKPDjmuU8fg
@@ -17219,7 +17257,7 @@ Open: {{$:/core/ui/Buttons/control-panel}} ''~ControlPanel'' &gt; ''Plugins'' &g
 <div created="20210210164820166" modified="20210210165128130" tags="TW5" title="Lien vers une chaîne aléatoire">
 <pre>&lt;a href=&quot;./index.html#:[tag[Chaîne]random[]]&quot;&gt;Mettez moi en favoris !&lt;/a&gt;</pre>
 </div>
-<div created="20210116022824182" modified="20210205181546597" tags="Apprendre 2D Tutoriels Chaîne Dessin" title="Lionel Cloërec">
+<div created="20210116022824182" modified="20210303011932393" tags="Apprendre 2D Tutoriels Chaîne Dessin" title="Lionel Cloërec">
 <pre>''chaîne :'' https://www.youtube.com/channel/UC59fSi0r_tlBe0VHLKRh-Rg
 
 &lt;&lt;&lt;
@@ -17231,8 +17269,7 @@ Bonne visite!
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU59fSi0r_tlBe0VHLKRh-Rg&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UU59fSi0r_tlBe0VHLKRh-Rg&gt;&gt;</pre>
 </div>
 <div created="20210116023449123" modified="20210116132211676" tags="liste" title="Liste de chaînes proposant des tutoriels 2D">
 <pre>&lt;&lt;list-links filter:&quot;[tag[2D]] +[tag[Tutoriels]] +[sort[title]]&quot;&gt;&gt;</pre>
@@ -17251,7 +17288,18 @@ Bonne visite!
 &lt;$list filter=&quot;[all[current]tagging[]sort[title]]&quot;&gt;
 &lt;$link&gt;&lt;li&gt;&lt;span&gt;&lt;$view field=&quot;title&quot;/&gt; (&lt;$count filter=&quot;[all[current]tagging[]]&quot;/&gt;)&lt;/span&gt;&lt;/li&gt;</pre>
 </div>
-<div created="20210211013312734" modified="20210211013433856" tags="Chaîne ASMR" title="Made In France ASMR">
+<div created="20210302230441181" modified="20210302232505374" tags="TW5 $:/tags/Macro" title="macro iframe-yt-list">
+<pre>\define iframe-yt-list(id:&quot;dQw4w9WgXcQ&quot; inline-style:&quot;&quot; class:&quot;&quot;)
+
+&lt;div class=&quot;container-iframe $class$&quot; style=&quot;$inline-style$;&quot;&gt;
+&lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=$id$&amp;iv_load_policy=3&amp;modestbranding=1&amp;&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+\end</pre>
+</div>
+<div created="20210302231649538" modified="20210302233450104" tags="TW5" title="macro iframe-yt-list example">
+<pre>&lt;&lt;iframe-yt-list UUBR8-60-B28hp2BmDPdntcQ &gt;&gt;</pre>
+</div>
+<div created="20210211013312734" modified="20210303012049659" tags="Chaîne ASMR" title="Made In France ASMR">
 <pre>''chaîne'' : https://www.youtube.com/c/MadeInFranceASMR/
 
 &lt;&lt;&lt;
@@ -17259,8 +17307,7 @@ Je m’appelle Maxence, je suis un cinéaste français réalisant entre autre de
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU4d18IlLmw0utmVxIjSadLQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;&lt;iframe-yt-list UU4d18IlLmw0utmVxIjSadLQ&gt;&gt;
 </pre>
 </div>
 <div created="20210111192249699" modified="20210111193538302" tags="style" title="Mathématiques">
@@ -17280,7 +17327,7 @@ Analyse critiques de chaines YouTube, avec un humour .. mordant.
 <div created="20210111192513231" modified="20210111193610038" tags="style" title="Mystère">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210119220458799" modified="20210205181536820" tags="Websérie Chaîne SF Critique Chronique" title="Nexus VI">
+<div created="20210119220458799" modified="20210303012209378" tags="Websérie Chaîne SF Critique Chronique" title="Nexus VI">
 <pre>''chaîne'' : https://www.youtube.com/c/ChroniqueNEXUSVI
 
 &lt;&lt;&lt;
@@ -17293,9 +17340,8 @@ Coup de gueule ou coup de cœur, quel que soit son avis, il saura toujours vous 
 Alors, accrochez-vous bien à vos sièges ! Parés au décollage ! FEU !!
 &lt;&lt;&lt;
 
-;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU8-UThnwzBI5ApzVG4MY7VQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+;dernière vidéo mise en ligne : 
+&lt;&lt;iframe-yt-list UU8-UThnwzBI5ApzVG4MY7VQ&gt;&gt;</pre>
 </div>
 <div created="20210111215221194" modified="20210205182551960" tags="Websérie Fantastique Comédie" title="Noob">
 <pre>''chaîne :'' https://www.youtube.com/channel/UCdHXMcWxwZr2qQpdCCOcSkw
@@ -17311,7 +17357,7 @@ Soudainement accro à un jeu de rôles en ligne, un femme se voit refusée dans 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLcSjKfSVEgz_TMOzxjWWwXMLODzLTwjwG&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
 </pre>
 </div>
-<div created="20210111202828420" modified="20210205181502990" tags="Chaîne Vulgarisation Histoire" title="Nota Bene">
+<div created="20210111202828420" modified="20210303012225523" tags="Chaîne Vulgarisation Histoire" title="Nota Bene">
 <pre>''chaîne'' : https://www.youtube.com/user/notabenemovies
 
 &lt;&lt;&lt;
@@ -17319,14 +17365,12 @@ Nota Bene est une émission dans laquelle j'essaye de comprendre l'Histoire avec
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUP46_MXP_WG_auH88FnfS1A
-&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUP46_MXP_WG_auH88FnfS1A&gt;&gt;</pre>
 </div>
 <div created="20210111193006243" modified="20210111193717439" tags="style" title="Paranormal">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210212022115086" modified="20210212022203022" tags="Chaîne Vulgarisation Histoire" title="Parlons Y-stoire">
+<div created="20210212022115086" modified="20210303012244321" tags="Chaîne Vulgarisation Histoire" title="Parlons Y-stoire">
 <pre>''chaîne'' : https://www.youtube.com/c/ParlonsYstoire
 
 &lt;&lt;&lt;
@@ -17334,14 +17378,12 @@ Nota Bene est une émission dans laquelle j'essaye de comprendre l'Histoire avec
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUuzwN74da6dfHW69r4S2qJg
-&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUuzwN74da6dfHW69r4S2qJg&gt;&gt;</pre>
 </div>
 <div created="20210111193015379" modified="20210111193720353" tags="style" title="Parodie">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111204543480" modified="20210205181455982" tags="Chronique [[Jeux vidéos]] Chaîne" title="Pause Process">
+<div created="20210111204543480" modified="20210303012709894" tags="Chronique [[Jeux vidéos]] Chaîne" title="Pause Process">
 <pre>''chaîne'' : https://www.youtube.com/channel/UC0JUkXAVVA4qWH1BQRs5N3A
 
 &lt;&lt;&lt;
@@ -17349,8 +17391,7 @@ Nota Bene est une émission dans laquelle j'essaye de comprendre l'Histoire avec
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU0JUkXAVVA4qWH1BQRs5N3A&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UU0JUkXAVVA4qWH1BQRs5N3A&gt;&gt;</pre>
 </div>
 <div created="20210111211951248" modified="20210211173502309" tags="Websérie Paranormal Urbex" title="PHANTASMA">
 <pre>''chaîne'' : https://www.youtube.com/user/legrandjd
@@ -17410,7 +17451,7 @@ Nota Bene est une émission dans laquelle j'essaye de comprendre l'Histoire avec
 <pre>&lt;$setvars _r=&quot;[tag[Chaîne]random[]]&quot; random=&quot;\{{{\ [r] \}}}\&quot;&gt;
 &lt;&lt;random&gt;&gt;&lt;/$setvars&gt;</pre>
 </div>
-<div created="20210119220122626" modified="20210205181448973" tags="Parodie Websérie Chaîne Animation" title="Re: Take">
+<div created="20210119220122626" modified="20210303012731211" tags="Parodie Websérie Chaîne Animation" title="Re: Take">
 <pre>''chaîne'' : https://www.youtube.com/c/ReTake
 
 &lt;&lt;&lt;
@@ -17418,8 +17459,7 @@ Re: Take est une chaîne gérée par Victor Niverd et Maxime Hoareau, deux jeune
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUppcm-0qJWlWd5Et14Bq_uw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUppcm-0qJWlWd5Et14Bq_uw&gt;&gt;</pre>
 </div>
 <div created="20210111214110586" modified="20210205182649447" tags="Websérie SF" title="Reboot (2015)">
 <pre>''chaîne :'' https://www.youtube.com/channel/UC2fbfUbNis0awEljlzydLuQ
@@ -17450,7 +17490,7 @@ L'émission consacrée aux codes et clichés énervants du jeu vidéo, pour pass
 &lt;div class=&quot;container-iframe&quot;&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLxJ4mlxcEjWO1bFZRtMmsdWKc81fFmSr1&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210212005524380" modified="20210212005730321" tags="Chaîne ASMR Humour Vlog" title="RiadhOFG">
+<div created="20210212005524380" modified="20210303012749347" tags="Chaîne ASMR Humour Vlog" title="RiadhOFG">
 <pre>''chaîne'' : https://www.youtube.com/c/RiadhOFG
 
 &lt;&lt;&lt;
@@ -17458,11 +17498,10 @@ L'émission consacrée aux codes et clichés énervants du jeu vidéo, pour pass
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUA9UYeDdNMnYu06ZnvCoXNg&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;&lt;iframe-yt-list UUA9UYeDdNMnYu06ZnvCoXNg&gt;&gt;
 </pre>
 </div>
-<div created="20210111200624703" modified="20210205181442583" tags="Chaîne Chronique [[Jeux vidéos]] Cinéma" title="Savun">
+<div created="20210111200624703" modified="20210303012808295" tags="Chaîne Chronique [[Jeux vidéos]] Cinéma" title="Savun">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCmCLlnZfSe93AoSGc03l7eA
 
 &lt;&lt;&lt;
@@ -17470,10 +17509,9 @@ Blasé indifférent qui parle de jeux vidéo et de films, avec un peu de sérieu
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUmCLlnZfSe93AoSGc03l7eA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUmCLlnZfSe93AoSGc03l7eA&gt;&gt;</pre>
 </div>
-<div created="20210212020052173" modified="20210212020316603" tags="Chaîne Vulgarisation Découvertes Expériences" title="Scilabus">
+<div created="20210212020052173" modified="20210303012827713" tags="Chaîne Vulgarisation Découvertes Expériences" title="Scilabus">
 <pre>''chaîne'' : https://www.youtube.com/user/scilabus
 
 &lt;&lt;&lt;
@@ -17481,8 +17519,7 @@ Blasé indifférent qui parle de jeux vidéo et de films, avec un peu de sérieu
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUeR8BYZS7IHYjk_9Mh5JgkA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUeR8BYZS7IHYjk_9Mh5JgkA&gt;&gt;</pre>
 </div>
 <div created="20190820060801943" creator="Mohammad" modified="20190820063435258" modifier="Mohammad" tags="" title="Setup Tiddlywiki for Saving to GitHub">
 <pre>This instruction explains how to setup a Tiddlywiki for saving to a GitHub repository. It assumes you have a working Tiddlywiki which can be saved as single file. See [[Making a Tiddlywiki]] for more information.
@@ -17507,7 +17544,10 @@ Saving to GitHub is configured in the [[$:/ControlPanel]] under the ''Saving'' t
 <div created="20210111192046082" modified="20210111193512651" tags="style" title="Sketch">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210112165902434" modified="20210223223730943" tags="Apprendre 3D 2D Tutoriels Chaîne Blender Dessin" title="sociamix">
+<div caption="snippet iframe-yt-list" created="20210302234101473" modified="20210302234150746" tags="$:/tags/TextEditor/Snippet" title="snippet iframe-yt-list" type="caption">
+<pre>&lt;&lt;iframe-yt-list PLAYLIST_ID_HERE &gt;&gt;</pre>
+</div>
+<div created="20210112165902434" modified="20210303012848703" tags="Apprendre 3D 2D Tutoriels Chaîne Blender Dessin" title="sociamix">
 <pre>''chaîne :'' https://www.youtube.com/user/ToutApprendre
 
 &lt;&lt;&lt;
@@ -17515,9 +17555,7 @@ Saving to GitHub is configured in the [[$:/ControlPanel]] under the ''Saving'' t
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/videoseries?iv_load_policy=3&amp;modestbranding=1&amp;list=UUFMQG2aYndcIPHGNfmkTo_w&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
+&lt;&lt;iframe-yt-list UUFMQG2aYndcIPHGNfmkTo_w&gt;&gt;</pre>
 </div>
 <div created="20210111210209697" modified="20210205182711948" tags="Websérie Comédie" title="Speed Detective (2014)">
 <pre>''Synopsys''
@@ -17544,6 +17582,26 @@ Les détectives Beaudoin et Barnabé sont sur le point de résoudre une nouvelle
 <pre>&lt;div class=&quot;nicelist&quot;&gt;
 &lt;$transclude tiddler=&quot;LTg#&quot;/&gt;
 </pre>
+</div>
+<div created="20210302133451773" modified="20210302225957276" tags="$:/tags/Stylesheet TW5" title="Style CSS icon after target blank anchors">
+<pre>.tc-tiddler-body a.tc-tiddlylink-external:after, a[target=_blank]:after {
+  content: url(&lt;&lt;datauri &quot;External_Link_Icon&quot;&gt;&gt;);
+	display: inline-block;
+	padding-left: 0.2em;
+}
+
+.tc-tiddler-body a.tc-tiddlylink-external, a[target=_blank]{
+	margin-right: 15px;
+}
+
+
+/* .tc-tiddler-body a.tc-tiddlylink:after , a.no-link-icon:after{
+  content:none;
+}
+
+.tc-tiddler-body a.tc-tiddlylink, a.no-link-icon {
+	margin-right: 0;
+} */</pre>
 </div>
 <div created="20210126155534216" modified="20210129154220121" tags="$:/tags/Stylesheet TW5" title="Style Dark mode" type="text/css">
 <pre>a, .nicelist ul li span {
@@ -17846,7 +17904,7 @@ Après s’être fait voler leur corps, Lily et Ben vont explorer un monde où l
 &lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/5lUBlW72qBQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210111224736078" modified="20210205181429860" tags="Chaîne Analyse" title="Sy Play">
+<div created="20210111224736078" modified="20210303012942198" tags="Chaîne Analyse" title="Sy Play">
 <pre>''chaîne : ''https://www.youtube.com/channel/UCe9YDt-khZyFlmTC_0u6-eg
 
 &lt;&lt;&lt;
@@ -17856,9 +17914,7 @@ Kaamelott, Harry Potter, Le Seigneur des Anneaux, Star Wars et bien d'autres uni
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUe9YDt-khZyFlmTC_0u6-eg&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UUe9YDt-khZyFlmTC_0u6-eg&gt;&gt;</pre>
 </div>
 <div color="#eecc66" created="20201112231556230" data-darkreader-inline-color="" icon="$:/core/images/new-here-button" modified="20210205164344179" style="--darkreader-inline-color:#eecc66;" title="tags">
 <pre>&lt;div class=&quot;nicelist&quot;&gt;
@@ -17870,7 +17926,7 @@ Kaamelott, Harry Potter, Le Seigneur des Anneaux, Star Wars et bien d'autres uni
 <div created="20210111192505403" modified="20210111193605775" tags="style" title="Technologie">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111195918049" modified="20210205181418148" tags="Conférences Apprendre Chaîne" title="TEDx">
+<div created="20210111195918049" modified="20210303013115823" tags="Conférences Apprendre Chaîne" title="TEDx">
 <pre>''chaîne'' : https://www.youtube.com/channel/UCLbgxBMMEo6mAYe87esxGmg
 
 &lt;&lt;&lt;
@@ -17879,13 +17935,9 @@ Kaamelott, Harry Potter, Le Seigneur des Anneaux, Star Wars et bien d'autres uni
 
 ;conférences TEDx en français :
 
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLGYU1mozSbXR1q5XM4hxc4BPeIcIIf9Ch
-&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
+&lt;&lt;iframe-yt-list PLGYU1mozSbXR1q5XM4hxc4BPeIcIIf9Ch&gt;&gt;
 
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLsRNoUx8w3rOxsAerY6UFmtRXMzcX6vgF&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
+&lt;&lt;iframe-yt-list PLsRNoUx8w3rOxsAerY6UFmtRXMzcX6vgF&gt;&gt;</pre>
 </div>
 <div created="20210111191407819" modified="20210211002231453" title="Template chaîne">
 <pre>''chaîne :'' 
@@ -17899,6 +17951,17 @@ Kaamelott, Harry Potter, Le Seigneur des Anneaux, Star Wars et bien d'autres uni
 &lt;div class=&quot;container-iframe&quot;&gt;
 &lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/videoseries?iv_load_policy=3&amp;modestbranding=1&amp;list=________ID_HERE_______________&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
 </div>
+<div caption="[template] channel" created="20201112234713275" modified="20210302233616088" tags="template $:/tags/TextEditor/Snippet" title="Template channel" type="caption">
+<pre>''channel'' : 
+
+&lt;&lt;&lt;
+
+&lt;&lt;&lt;
+
+;Last videos uploaded :
+
+&lt;&lt;iframe-yt-list PLAYLIST_ID_HERE &gt;&gt;</pre>
+</div>
 <div created="20210101192728514" modified="20210111191400174" tags="TW5" title="Templates">
 <pre>* [[chaîne|Template chaîne]]
 * vidéo
@@ -17907,7 +17970,7 @@ Kaamelott, Harry Potter, Le Seigneur des Anneaux, Star Wars et bien d'autres uni
 <div created="20210111192325825" modified="20210111193547910" tags="style" title="Tests">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
 </div>
-<div created="20210111200923046" modified="20210205181350529" tags="Chaîne Debunk Vulgarisation" title="The Sciencoder">
+<div created="20210111200923046" modified="20210303013131246" tags="Chaîne Debunk Vulgarisation" title="The Sciencoder">
 <pre>''chaîne'' : https://www.youtube.com/channel/UC1zVvHsRsvxInUMX4dfIyAQ
 
 &lt;&lt;&lt;
@@ -17916,8 +17979,7 @@ Les COMPLOTS... à défaut d'être intéressants, ils sont amusants... enfin pou
 
 ;dernière vidéo mise en ligne :
 
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UU1zVvHsRsvxInUMX4dfIyAQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+&lt;&lt;iframe-yt-list UU1zVvHsRsvxInUMX4dfIyAQ&gt;&gt;</pre>
 </div>
 <div created="20190409194412094" creator="Mohammad" modified="20210223140521464" modifier="Mohammad" tags="start todo" title="Tiddlywiki et le GitHub Saver">
 <pre>!! Instructions
@@ -18022,7 +18084,7 @@ What The Cut !? est une émission humoristique créée par Antoine Daniel et don
 &lt;div class=&quot;container-iframe&quot;&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=PLmnpJZxBm1yb6cYGcuj1XQaSYcZSBlNwN&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
-<div created="20210112165719923" modified="20210205181218885" tags="3D Apprendre Tutoriels Chaîne Blender" title="XYSeb">
+<div created="20210112165719923" modified="20210303013148311" tags="3D Apprendre Tutoriels Chaîne Blender" title="XYSeb">
 <pre>''chaîne :'' https://www.youtube.com/channel/UCXKfFIeZ6PLVxwVDW1GqF1Q
 
 &lt;&lt;&lt;
@@ -18031,12 +18093,9 @@ What The Cut !? est une émission humoristique créée par Antoine Daniel et don
 
 ;dernière vidéo mise en ligne :
 
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUXKfFIeZ6PLVxwVDW1GqF1Q&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-</pre>
+&lt;&lt;iframe-yt-list UUXKfFIeZ6PLVxwVDW1GqF1Q&gt;&gt;</pre>
 </div>
-<div created="20210211193629361" modified="20210211193733536" tags="Chaîne ASMR" title="Zatras ASMR">
+<div created="20210211193629361" modified="20210303013226508" tags="Chaîne ASMR" title="Zatras ASMR">
 <pre>''chaîne'' : https://www.youtube.com/c/ZatrasASMR
 
 &lt;&lt;&lt;
@@ -18044,9 +18103,7 @@ What The Cut !? est une émission humoristique créée par Antoine Daniel et don
 &lt;&lt;&lt;
 
 ;dernière vidéo mise en ligne :
-&lt;div class=&quot;container-iframe&quot;&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/videoseries?list=UUvysyVlaNbuKAMNXBLAGSPQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
-</pre>
+&lt;&lt;iframe-yt-list UUvysyVlaNbuKAMNXBLAGSPQ&gt;&gt;</pre>
 </div>
 <div created="20210111193209319" modified="20210111193748377" tags="style" title="Zététique">
 <pre>&lt;$transclude tiddler=&quot;LTg&quot;/&gt;</pre>
